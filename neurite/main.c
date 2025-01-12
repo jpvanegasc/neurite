@@ -1,6 +1,10 @@
 #include <stdio.h>
 
+#include "neural_network.h"
+
 int main() {
-    printf("Hello, World!\n");
+    train();
+    int result = predict();
+    printf("Prediction: %d\n", result);
     return 0;
 }

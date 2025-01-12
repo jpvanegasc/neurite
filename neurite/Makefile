@@ -6,8 +6,11 @@ MAIN = main.c
 run: main.o
 	time ./main.o
 
-main.o: $(MAIN)
+main.o: $(MAIN) neural_network.o
 	$(COMPILER) -O2 -Wall $^ -o $@
+
+neural_network.o : neural_network.c neural_network.h
+	$(COMPILER) -O2 -Wall -c $< -o $@
 
 
 # Debugging and profiling
