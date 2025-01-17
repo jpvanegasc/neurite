@@ -17,13 +17,19 @@ int main() {
     initialize_layer(&hidden_layer_2, HIDDEN_2_SIZE, OUTPUT_SIZE);
     initialize_layer(&output_layer, OUTPUT_SIZE, 0);
 
+    struct Network network;
+    network.input_layer = &input_layer;
+    network.hidden_layers_size = 2;
+    network.hidden_layers = (struct Layer **)malloc(2 * sizeof(struct Layer *));
+    network.hidden_layers[0] = &hidden_layer_1;
+    network.hidden_layers[1] = &hidden_layer_2;
+    network.output_layer = &output_layer;
+
     for (int i = 0; i < INPUT_SIZE; i++) {
         input_layer.neurons[i] = five[i];
     }
 
-    forward_propagation_step(&hidden_layer_1, &input_layer);
-    forward_propagation_step(&hidden_layer_2, &hidden_layer_1);
-    forward_propagation_step(&output_layer, &hidden_layer_2);
+    forward_propagation(&network);
 
     // Print output_layer
     for (int i = 0; i < OUTPUT_SIZE; i++) {

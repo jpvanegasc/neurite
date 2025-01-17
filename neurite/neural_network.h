@@ -12,6 +12,12 @@ struct Layer {
     float **weights;
 };
 
+struct Network {
+    struct Layer *input_layer, *output_layer;
+    int hidden_layers_size;
+    struct Layer **hidden_layers;
+};
+
 void train();
 
 int predict();
@@ -24,4 +30,6 @@ void free_layer(struct Layer *layer, int output_size);
 
 // a1_i = s(W_ij * a0_j + b_i)
 void forward_propagation_step(struct Layer *a1, struct Layer *a0);
+
+void forward_propagation(struct Network *network);
 #endif // __NEURAL_NETWORK_H
