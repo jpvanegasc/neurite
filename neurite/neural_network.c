@@ -31,7 +31,6 @@ void free_layer(struct Layer *layer, int output_size) {
 
 void forward_propagation_step(struct Layer *a1, struct Layer *a0) {
     for (int i = 0; i < a1->neurons_size; i++) {
-        printf("%d: %f\n", i, a1->neurons[i]);
         float sum = 0;
         for (int j = 0; j < a0->neurons_size; j++) {
             sum += a0->neurons[i] * a0->weights[i][j];

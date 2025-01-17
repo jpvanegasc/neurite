@@ -21,11 +21,8 @@ int main() {
         input_layer.neurons[i] = five[i];
     }
 
-    printf("Input layer:\n");
     forward_propagation_step(&hidden_layer_1, &input_layer);
-    printf("Hidden layer 1:\n");
     forward_propagation_step(&hidden_layer_2, &hidden_layer_1);
-    printf("Hidden layer 2:\n");
     forward_propagation_step(&output_layer, &hidden_layer_2);
 
     // Print output_layer
