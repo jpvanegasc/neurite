@@ -2,6 +2,7 @@ all: main.o
 
 COMPILER = gcc -std=c11
 MAIN = main.c
+ALL = $(MAIN) neural_network.o
 
 run: main.o
 	time ./main.o
@@ -21,32 +22,32 @@ CACH = --tool=cachegrind
 .PHONY:
 .SILENT:
 
-assembler: $(MAIN) ## Disassemble the project
+assembler: $(ALL) ## Disassemble the project
 	$(COMPILER) -g -S $(MAIN) -o main.S
 
-parallel: $(MAIN) ## Run using OpenMP
+parallel: $(ALL) ## Run using OpenMP
 	$(COMPILER) -fopenmp -O2 $< -o parallel.o
 	time ./parallel.o
 
-debug: $(MAIN) ## Compile and run with debugging
+debug: $(ALL) ## Compile and run with debugging
 	$(COMPILER) $(DEBUG) $< -o debug.o
 	./debug.o
 
-valgrind: $(MAIN) ## Memory leaks
+valgrind: $(ALL) ## Memory leaks
 	$(COMPILER) -g $< -o valgrind.o
 	valgrind $(VAL) ./valgrind.o
 
-cachegrind: $(MAIN) ## Cache misses
+cachegrind: $(ALL) ## Cache misses
 	$(COMPILER) -g $< -o cachegrind.o
 	valgrind $(CACH) ./cachegrind.o
 
-gprof: $(MAIN) ## Cross-platform performance analysis
+gprof: $(ALL) ## Cross-platform performance analysis
 	$(COMPILER) -Wall -pg $< -o gprof.o
 	./gprof.o
 	gprof gprof.o gmon.out > analysis.txt
 	most analysis.txt
 
-perf: $(MAIN) ## Linux performance analysis (includes call stack)
+perf: $(ALL) ## Linux performance analysis (includes call stack)
 	$(COMPILER) -Wall -pg $< -o perf.o
 	perf record ./perf.o ; perf report
 
