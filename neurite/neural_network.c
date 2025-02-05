@@ -47,7 +47,6 @@ void forward_propagation(struct Network *network) {
                                  network->hidden_layers[i - 1]);
     }
 
-    forward_propagation_step(
-        network->output_layer,
-        network->hidden_layers[network->hidden_layers_size - 1]);
+    forward_propagation_step(network->output_layer,
+                             network->hidden_layers[network->hidden_layers_size - 1]);
 }
