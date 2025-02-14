@@ -36,4 +36,7 @@ void free_network(struct Network *network);
 void forward_propagation_step(struct Layer *a1, struct Layer *a0);
 
 void forward_propagation(struct Network *network);
+
+float cost_function(struct Layer *output_layer, float *expected_output);
+
 #endif // __NEURAL_NETWORK_H

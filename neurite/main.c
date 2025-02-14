@@ -23,7 +23,10 @@ int main() {
         printf("%f ", network.output_layer->neurons[i]);
     }
 
-    free_network(&network);
+    float cost =
+        cost_function(network.output_layer, (float[]){0, 0, 0, 0, 0, 1.0, 0, 0, 0, 0});
+    printf("\nCost: %f\n", cost);
 
+    free_network(&network);
     return 0;
 }

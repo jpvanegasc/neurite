@@ -88,3 +88,11 @@ void forward_propagation(struct Network *network) {
     forward_propagation_step(network->output_layer,
                              network->hidden_layers[network->hidden_layers_size - 1]);
 }
+
+float cost_function(struct Layer *output_layer, float *expected_output) {
+    float cost = 0;
+    for (int i = 0; i < output_layer->neurons_size; i++) {
+        cost += pow(output_layer->neurons[i] - expected_output[i], 2);
+    }
+    return cost;
+}
