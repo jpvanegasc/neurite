@@ -73,7 +73,7 @@ void forward_propagation_step(struct Layer *a1, struct Layer *a0) {
         for (int j = 0; j < a0->neurons_size; j++) {
             sum += a0->neurons[i] * a0->weights[i][j];
         }
-        a1->neurons[i] = sigmoid(sum + a1->biases[i]);
+        a1->neurons[i] = sigmoid(sum + a0->biases[i]);
     }
 }
 
