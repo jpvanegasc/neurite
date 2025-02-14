@@ -19,8 +19,10 @@ struct Network {
 };
 
 void initialize_layer(struct Layer *layer, int layer_size, int output_size);
-void initialize_network(struct Network *network, int input_size, int output_size,
-                        int hidden_layers_size, int *hidden_layers_sizes);
+void initialize_network(
+    struct Network *network, int input_size, int output_size, int hidden_layers_size,
+    int *hidden_layers_sizes
+);
 
 void free_layer(struct Layer *layer);
 void free_network(struct Network *network);

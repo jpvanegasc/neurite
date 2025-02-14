@@ -23,12 +23,14 @@ void forward_propagation(struct Network *network) {
     forward_propagation_step(network->hidden_layers[0], network->input_layer);
 
     for (int i = 1; i < network->hidden_layers_size; i++) {
-        forward_propagation_step(network->hidden_layers[i],
-                                 network->hidden_layers[i - 1]);
+        forward_propagation_step(
+            network->hidden_layers[i], network->hidden_layers[i - 1]
+        );
     }
 
-    forward_propagation_step(network->output_layer,
-                             network->hidden_layers[network->hidden_layers_size - 1]);
+    forward_propagation_step(
+        network->output_layer, network->hidden_layers[network->hidden_layers_size - 1]
+    );
 }
 
 float cost_function(struct Layer *output_layer, float *expected_output) {

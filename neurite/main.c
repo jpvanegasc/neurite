@@ -11,8 +11,9 @@ const int OUTPUT_SIZE = 10;
 
 int main() {
     struct Network network;
-    initialize_network(&network, INPUT_SIZE, OUTPUT_SIZE, 2,
-                       (int[]){HIDDEN_1_SIZE, HIDDEN_2_SIZE});
+    initialize_network(
+        &network, INPUT_SIZE, OUTPUT_SIZE, 2, (int[]){HIDDEN_1_SIZE, HIDDEN_2_SIZE}
+    );
 
     for (int i = 0; i < INPUT_SIZE; i++) {
         network.input_layer->neurons[i] = five[i];

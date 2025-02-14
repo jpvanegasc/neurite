@@ -17,8 +17,10 @@ void initialize_layer(struct Layer *layer, int layer_size, int output_size) {
     }
 }
 
-void initialize_network(struct Network *network, int input_size, int output_size,
-                        int hidden_layers_size, int *hidden_layers_sizes) {
+void initialize_network(
+    struct Network *network, int input_size, int output_size, int hidden_layers_size,
+    int *hidden_layers_sizes
+) {
 
     network->hidden_layers_size = hidden_layers_size;
     network->input_layer = (struct Layer *)malloc(sizeof(struct Layer));
@@ -33,8 +35,9 @@ void initialize_network(struct Network *network, int input_size, int output_size
         network->hidden_layers[i] = (struct Layer *)malloc(sizeof(struct Layer));
         int next_layer_size =
             i == hidden_layers_size - 1 ? output_size : hidden_layers_sizes[i + 1];
-        initialize_layer(network->hidden_layers[i], hidden_layers_sizes[i],
-                         next_layer_size);
+        initialize_layer(
+            network->hidden_layers[i], hidden_layers_sizes[i], next_layer_size
+        );
     }
 }
 
