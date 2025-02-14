@@ -2,17 +2,19 @@ all: main.o
 
 COMPILER = gcc -std=c11
 MAIN = main.c
-ALL = $(MAIN) neural_network.o
+ALL = $(MAIN) neural_network.o training.o
 
 run: main.o
 	time ./main.o
 
-main.o: $(MAIN) neural_network.o
+main.o: $(ALL)
 	$(COMPILER) -O2 -Wall $^ -o $@
 
 neural_network.o : neural_network.c neural_network.h
 	$(COMPILER) -O2 -Wall -c $< -o $@
 
+training.o : training.c training.h
+	$(COMPILER) -O2 -Wall -c $< -o $@
 
 # Debugging and profiling
 DEBUG = -g -Wall -fsanitize=address -fsanitize=leak -fsanitize=undefined

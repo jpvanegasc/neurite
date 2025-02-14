@@ -1,6 +1,7 @@
 #include <Python.h>
 
 #include "neural_network.h"
+#include "training.h"
 
 static PyObject *train_method(PyObject *self, PyObject *args) {
     train();

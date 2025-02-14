@@ -2,6 +2,7 @@
 
 #include "neural_network.h"
 #include "temporary_values.h"
+#include "training.h"
 
 const int INPUT_SIZE = 784;
 const int HIDDEN_1_SIZE = 16;
